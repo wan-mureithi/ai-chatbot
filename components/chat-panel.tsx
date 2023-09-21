@@ -6,44 +6,32 @@ import { ButtonScrollToBottom } from '@/components/button-scroll-to-bottom'
 import { IconRefresh, IconStop } from '@/components/ui/icons'
 import { FooterText } from '@/components/footer'
 
-// export interface ChatPanelProps
-//   extends Pick<
-//     UseChatHelpers,
-//     | 'append'
-//     | 'isLoading'
-//     | 'reload'
-//     | 'messages'
-//     | 'stop'
-//     | 'input'
-//     | 'setInput'
-//   > {
-//   id?: string
-// }
+
 interface ChatProps {
   message: string
   messages: any
   handleSendMessage: Function
   setInput: () => void
-  loading: boolean,
+  isLoading: boolean,
   input: any
 }
 
-export function ChatPanel({ handleSendMessage, messages, loading, setInput, input }: ChatProps) {
+export function ChatPanel({ handleSendMessage, messages, isLoading, setInput, input }: ChatProps) {
   //const containerRef = useRef<HTMLDivElement>(null)
-
+  console.log(isLoading)
   return (
     <div className="fixed inset-x-0 bottom-0 bg-gradient-to-b from-muted/10 from-10% to-muted/30 to-50%">
       <ButtonScrollToBottom />
       <div className="mx-auto sm:max-w-2xl sm:px-4">
         <div className="flex h-10 items-center justify-center">
-          {loading ? (
+          {isLoading ? (
             <Button
               variant="outline"
               //onClick={() => stop()}
               className="bg-background"
             >
               <IconStop className="mr-2" />
-              Stop generating
+              Generating response
             </Button>
           ) : (
             messages?.length > 0 && (
@@ -70,7 +58,7 @@ export function ChatPanel({ handleSendMessage, messages, loading, setInput, inpu
             // }}
             input={input}
             setInput={setInput}
-            isLoading={loading}
+            isLoading={isLoading}
           />
           <FooterText className="hidden sm:block" />
         </div>

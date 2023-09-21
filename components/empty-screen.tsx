@@ -41,7 +41,7 @@ export function EmptyScreen({ setInput }: any) {
               key={index}
               variant="link"
               className="h-auto p-0 text-base"
-              onClick={() => setInput(message)}
+              onClick={() => setInput(message.message)}
             >
               <IconArrowRight className="mr-2 text-muted-foreground" />
               {message.heading}

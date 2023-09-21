@@ -13,18 +13,14 @@ import { useEnterSubmit } from '@/lib/hooks/use-enter-submit'
 import { cn } from '@/lib/utils'
 import { useRouter } from 'next/navigation'
 
-export interface PromptProps
-  extends Pick<UseChatHelpers, 'input' | 'setInput'> {
-  onSubmit: (value: string) => Promise<void>
-  isLoading: boolean
-}
+
 
 export function PromptForm({
   onSubmit,
   input,
   setInput,
   isLoading
-}: PromptProps) {
+}: any) {
   const { formRef, onKeyDown } = useEnterSubmit()
   const inputRef = React.useRef<HTMLTextAreaElement>(null)
   const router = useRouter()
@@ -34,7 +30,7 @@ export function PromptForm({
       inputRef.current.focus()
     }
   }, [])
-
+  console.log(input)
   return (
     <form
       onSubmit={async e => {
@@ -42,7 +38,7 @@ export function PromptForm({
         if (!input?.trim()) {
           return
         }
-        setInput([''])
+        setInput('')
         await onSubmit(input)
       }}
       ref={formRef}
@@ -84,6 +80,7 @@ export function PromptForm({
               <Button
                 type="submit"
                 size="icon"
+                //onClick={() => onSubmit(input)}
                 disabled={isLoading || input === ''}
               >
                 <IconArrowElbow />
