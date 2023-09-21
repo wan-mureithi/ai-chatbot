@@ -19,12 +19,16 @@ import { FooterText } from '@/components/footer'
 //   > {
 //   id?: string
 // }
-interface MessageInterface {
+interface ChatProps {
   message: string
-  type: "request" | "response"
+  messages: any
+  handleSendMessage: Function
+  setInput: () => void
+  loading: boolean,
+  input: any
 }
 
-export function ChatPanel({ handleSendMessage, messages, loading, setMessage }: any) {
+export function ChatPanel({ handleSendMessage, messages, loading, setInput, input }: ChatProps) {
   //const containerRef = useRef<HTMLDivElement>(null)
 
   return (
@@ -64,8 +68,8 @@ export function ChatPanel({ handleSendMessage, messages, loading, setMessage }: 
             //     role: 'user'
             //   })
             // }}
-            input={messages}
-            setInput={setMessage}
+            input={input}
+            setInput={setInput}
             isLoading={loading}
           />
           <FooterText className="hidden sm:block" />

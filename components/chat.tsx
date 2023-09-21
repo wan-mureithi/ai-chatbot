@@ -96,11 +96,12 @@ export function Chat({ id, className }: ChatProps) {
       <ChatPanel
         id={id}
         isLoading={loading}
-        stop={stop}
+        //stop={stop}
         //append={append}
         //reload={reload}
+        handleSendMessage={handleSendMessage}
         messages={messages}
-        input={message}
+        input={input}
         setInput={setInput}
       />
 
