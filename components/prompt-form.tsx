@@ -42,7 +42,7 @@ export function PromptForm({
         if (!input?.trim()) {
           return
         }
-        setInput('')
+        setInput([''])
         await onSubmit(input)
       }}
       ref={formRef}
