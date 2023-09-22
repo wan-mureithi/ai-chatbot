@@ -23,7 +23,7 @@ interface MessageInterface {
   type: "request" | "response"
 }
 
-const API_URL = "wss://vida-plus-api-3ca5e171f2a5.herokuapp.com/chat"
+const API_URL = process.env.API_URL
 
 export function Chat({ id, className }: ChatProps) {
 
